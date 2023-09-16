@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from "axios"
 // Suggested initial states
 const initialMessage = ''
 const initialEmail = ''
@@ -29,7 +29,7 @@ export default class AppClass extends React.Component {
     let x = this.state.index % 3 + 1;
     let y = this.state.index / 3 + 1;
     let roundedY = Math.floor(y)
-    console.log(x, roundedY)
+    // console.log(x, roundedY)
     return {x , roundedY}
   }
   
@@ -102,15 +102,25 @@ export default class AppClass extends React.Component {
 
   onChange = (evt) => {
     // You will need this to update the value of the input.
+    evt.preventDefault()
+    this.setState({email: evt.target.value})
   }
 
   onSubmit = (evt) => {
     // Use a POST request to send a payload to the server.
+    evt.preventDefault()
+    this.setState({initialState})
+    axios.post("http://localhost:9000/api/result", {
+      "x": this.getXY().x,
+      "y": this.getXY().roundedY,
+      "steps": this.state.steps,
+      "email": this.state.email
+    })
   }
 
   render() {
     this.getXY()
-    console.log(this.state)
+    // console.log(this.state)
     const { className } = this.props
     return (
       <div id="wrapper" className={className}>
@@ -139,7 +149,7 @@ export default class AppClass extends React.Component {
         </div>
         <form onSubmit={this.onSubmit}>
           <input onChange={this.onChange} id="email" type="email" placeholder="type email"></input>
-          <input id="submit" type="submit"></input>
+          <input onClick={() => {this.reset()}} id="submit" type="submit"></input>
         </form>
       </div>
     )
