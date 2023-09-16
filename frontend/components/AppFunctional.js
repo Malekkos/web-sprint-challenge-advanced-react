@@ -140,6 +140,9 @@ export default function AppFunctional(props) {
       console.log(res)
       setMessage(res.data.message)
     })
+    .then(res => {
+      setEmail(initialEmail)
+    })
   }
 
   return (
