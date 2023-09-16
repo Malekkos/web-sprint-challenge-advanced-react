@@ -98,22 +98,25 @@ export default function AppFunctional(props) {
     console.log(getXY().x, getXY().roundedY)
     if (direction === "left" && getXY().x !== 1) {
       setIndex(index - 1)
-      
+      setSteps(steps + 1)
     } else {
       getXYMessage(direction)
     }
     if (direction === "down" && getXY().roundedY !== 3) {
       setIndex(index + 3)
+      setSteps(steps + 1)
     } else {
       getXYMessage(direction)
     }
     if (direction === "right" && getXY().x !== 3) {
       setIndex(index + 1)
+      setSteps(steps + 1)
     } else {
       getXYMessage(direction)
     }
     if (direction === "up" && getXY().roundedY !== 1) {
       setIndex(index - 3)
+      setSteps(steps + 1)
     } else {
       getXYMessage(direction)
     }
