@@ -38,16 +38,16 @@ export default class AppClass extends React.Component {
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
     if(this.getXY().x === 1 && direction == "left") {
-      this.setState({message: `you can't go ${direction}`})
+      this.setState({message: `You can't go ${direction}`})
     }
     if(this.getXY().roundedY === 1 && direction === "up") {
-      this.setState({message: `you can't go ${direction}`})
+      this.setState({message: `You can't go ${direction}`})
     }
     if(this.getXY().x === 3 && direction === "right") {
-      this.setState({message: `you can't go ${direction}`})
+      this.setState({message: `You can't go ${direction}`})
     }
     if(this.getXY().roundedY === 3 && direction ==="down") {
-      this.setState({message: `you can't go ${direction}`})
+      this.setState({message: `You can't go ${direction}`})
     }
   }
 
