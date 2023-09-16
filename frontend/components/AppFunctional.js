@@ -49,22 +49,11 @@ export default function AppFunctional(props) {
     // console.log(x, roundedY)
     return {x , roundedY}
   }
-// Determining how to get coords
-// using the index of b
-//
-
-
-
-
-
-
-
 
   function getXYMessage(direction) {
     // It it not necessary to have a state to track the "Coordinates (2, 2)" message for the user.
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
-
     if(getXY().x === 1 && direction == "left") {
       console.log(setMessage(`you can't go ${direction}`))
       return index
@@ -146,7 +135,11 @@ export default function AppFunctional(props) {
       "y": getXY().roundedY,
       "steps": steps,
       "email": email
-    } )
+    })
+    .then(res => {
+      console.log(res)
+      setMessage(res.data.message)
+    })
   }
 
   return (
