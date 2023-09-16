@@ -143,6 +143,10 @@ export default function AppFunctional(props) {
     .then(res => {
       setEmail(initialEmail)
     })
+    .catch(err => {
+      console.log(err)
+      setMessage(err.response.data.message)
+    })
   }
 
   return (

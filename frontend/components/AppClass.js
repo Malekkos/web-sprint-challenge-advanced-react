@@ -123,6 +123,10 @@ export default class AppClass extends React.Component {
     .then(res => {
       this.setState({email: ""})
     })
+    .catch(err => {
+      console.log(err)
+      this.setState({message: err.response.data.message})
+    })
   }
 
   render() {
