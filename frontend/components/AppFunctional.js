@@ -1,5 +1,6 @@
 import  React from 'react'
 import { useState } from "react"
+import axios from "axios"
 // Suggested initial states
 const initialMessage = ''
 const initialEmail = ''
@@ -133,11 +134,19 @@ export default function AppFunctional(props) {
 
   function onChange(evt) {
     // You will need this to update the value of the input.
-
+    // console.log(evt.target.value)
+    setEmail(evt.target.value)
   }
 
   function onSubmit(evt) {
     // Use a POST request to send a payload to the server.
+    evt.preventDefault()
+    axios.post("http://localhost:9000/api/result", {
+      "x": getXY().x,
+      "y": getXY().roundedY,
+      "steps": steps,
+      "email": email
+    } )
   }
 
   return (
@@ -165,8 +174,8 @@ export default function AppFunctional(props) {
         <button onClick={() => {move("down")}} id="down">DOWN</button>
         <button onClick={() => {reset()}} id="reset">reset</button>
       </div>
-      <form>
-        <input id="email" type="email" placeholder="type email"></input>
+      <form onSubmit={onSubmit}>
+        <input onChange={onChange} value={email} id="email" type="email" placeholder="type email"></input>
         <input id="submit" type="submit"></input>
       </form>
     </div>
