@@ -55,19 +55,19 @@ export default function AppFunctional(props) {
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
     if(getXY().x === 1 && direction == "left") {
-      console.log(setMessage(`You can't go ${direction}`))
+      setMessage(`You can't go ${direction}`)
       return index
     }
     if(getXY().roundedY === 1 && direction === "up") {
-      console.log(setMessage(`You can't go ${direction}`))
+      setMessage(`You can't go ${direction}`)
       return index
     }
     if(getXY().x === 3 && direction === "right") {
-      console.log(setMessage(`You can't go ${direction}`))
+      setMessage(`You can't go ${direction}`)
       return
     }
     if(getXY().roundedY === 3 && direction ==="down") {
-      console.log(setMessage(`You can't go ${direction}`))
+      setMessage(`You can't go ${direction}`)
       return
     }
   }
@@ -85,7 +85,7 @@ export default function AppFunctional(props) {
     // of the "B" would be. If the move is impossible because we are at the edge of the grid,
     // this helper should return the current index unchanged.
     // getXYMessage(direction)
-    console.log(getXY().x, getXY().roundedY)
+    // console.log(getXY().x, getXY().roundedY)
     if (direction === "left" && getXY().x !== 1) {
       setIndex(index - 1)
       setSteps(steps + 1)
@@ -137,23 +137,31 @@ export default function AppFunctional(props) {
       "email": email
     })
     .then(res => {
-      console.log(res)
+      // console.log(res)
       setMessage(res.data.message)
     })
     .then(res => {
       setEmail(initialEmail)
     })
     .catch(err => {
-      console.log(err)
+      // console.log(err)
       setMessage(err.response.data.message)
     })
   }
-
+  const stepsMessage = () => {
+    if (steps == 0) {
+      return "times"
+    } else if (steps == 1) {
+      return "time"
+    } else {
+      return "times"
+    }
+  }
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
         <h3 id="coordinates">Coordinates ({getXY().x}, {getXY().roundedY})</h3>
-        <h3 id="steps">You moved {steps} times</h3>
+        <h3 id="steps">You moved {steps} {stepsMessage()}</h3>
       </div>
       <div id="grid">
         {
