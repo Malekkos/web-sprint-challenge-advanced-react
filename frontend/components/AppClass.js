@@ -128,7 +128,15 @@ export default class AppClass extends React.Component {
       this.setState({message: err.response.data.message})
     })
   }
-
+  stepsMessage = () => {
+    if (this.state.steps == 0) {
+      return "times"
+    } else if (this.state.steps == 1) {
+      return "time"
+    } else {
+      return "times"
+    }
+  }
   render() {
     this.getXY()
     // console.log(this.state)
@@ -137,7 +145,7 @@ export default class AppClass extends React.Component {
       <div id="wrapper" className={className}>
         <div className="info">
           <h3 id="coordinates">Coordinates ({this.getXY().x}, {this.getXY().roundedY})</h3>
-          <h3 id="steps">You moved {this.state.steps} times</h3>
+          <h3 id="steps">You moved {this.state.steps} {this.stepsMessage()}</h3>
         </div>
         <div id="grid">
           {
