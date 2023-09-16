@@ -55,19 +55,19 @@ export default function AppFunctional(props) {
     // You can use the `getXY` helper above to obtain the coordinates, and then `getXYMessage`
     // returns the fully constructed string.
     if(getXY().x === 1 && direction == "left") {
-      console.log(setMessage(`you can't go ${direction}`))
+      console.log(setMessage(`You can't go ${direction}`))
       return index
     }
     if(getXY().roundedY === 1 && direction === "up") {
-      console.log(setMessage(`you can't go ${direction}`))
+      console.log(setMessage(`You can't go ${direction}`))
       return index
     }
     if(getXY().x === 3 && direction === "right") {
-      console.log(setMessage(`you can't go ${direction}`))
+      console.log(setMessage(`You can't go ${direction}`))
       return
     }
     if(getXY().roundedY === 3 && direction ==="down") {
-      console.log(setMessage(`you can't go ${direction}`))
+      console.log(setMessage(`You can't go ${direction}`))
       return
     }
   }
@@ -152,7 +152,7 @@ export default function AppFunctional(props) {
   return (
     <div id="wrapper" className={props.className}>
       <div className="info">
-        <h3 id="coordinates">Coordinates {getXY().x}, {getXY().roundedY}</h3>
+        <h3 id="coordinates">Coordinates ({getXY().x}, {getXY().roundedY})</h3>
         <h3 id="steps">You moved {steps} times</h3>
       </div>
       <div id="grid">
