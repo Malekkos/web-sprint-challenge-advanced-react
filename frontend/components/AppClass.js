@@ -138,7 +138,7 @@ export default class AppClass extends React.Component {
     }
   }
   render() {
-    this.getXY()
+    // this.getXY()
     // console.log(this.state)
     const { className } = this.props
     return (
