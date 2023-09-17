@@ -8,7 +8,6 @@ import userEvent from '@testing-library/user-event'
 //Test that visible text from headings buttons links are on the screen
 //test that typing on the input results in its value changing to the entered text
 // PERSONAL \/
-// check if attempts to break the program work
 // const {default: userEvent} = require('@testing-library/user-event')
 test('sanity', () => {
   expect(true).toBe(true)
@@ -44,4 +43,11 @@ test("Typing into a input, email, changes its value", () => {
   userEvent.type(emailInput, "garcia@mojave.com")
 
  waitFor(() => {expect(emailInput).toHaveTextContent(/garcia@mojave.com/i)})
+})
+test("On fresh render, message conatiner is empty", () => {
+  render (<AppClass /> )
+
+  let messageContainer = screen.getByRole("heading", {name: ""})
+
+  waitFor(() => {expect(messageContainer).toHaveTextContent("")})
 })
