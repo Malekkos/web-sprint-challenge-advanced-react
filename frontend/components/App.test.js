@@ -60,3 +60,21 @@ test("on fresh render, coordinates are initially 2,2", () => {
 
   expect(coordinatesContainer).toHaveTextContent("Coordinates (2, 2)")
 })
+
+test("Using the directional keys to move the block reflects the movements in the coordinates ", () => {
+  render (<AppClass />) 
+
+  let leftButton = screen.getByRole("button", {name: "LEFT"})
+  let rightButton = screen.getByRole("button", {name: "RIGHT"})
+  let upButton = screen.getByRole("button", {name: "UP"})
+  let downButton = screen.getByRole("button", {name: "DOWN"})
+  let coordinatesContainer = screen.getByRole("heading", {name: "Coordinates (2, 2)"})
+
+  userEvent.click(leftButton)
+  userEvent.click(upButton)
+  userEvent.click(rightButton)
+  userEvent.click(rightButton)
+  userEvent.click(downButton)
+
+  waitFor(() => {expect(coordinatesContainer).toHaveTextContent("Coordinates (3, 2)")})
+})
