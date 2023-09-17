@@ -44,10 +44,19 @@ test("Typing into a input, email, changes its value", () => {
 
  waitFor(() => {expect(emailInput).toHaveTextContent(/garcia@mojave.com/i)})
 })
+
 test("On fresh render, message conatiner is empty", () => {
   render (<AppClass /> )
 
   let messageContainer = screen.getByRole("heading", {name: ""})
 
   waitFor(() => {expect(messageContainer).toHaveTextContent("")})
+})
+
+test("on fresh render, coordinates are initially 2,2", () => {
+  render (<AppClass />)
+
+  let coordinatesContainer = screen.getByRole("heading", {name: "Coordinates (2, 2)"})
+
+  expect(coordinatesContainer).toHaveTextContent("Coordinates (2, 2)")
 })
