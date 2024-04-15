@@ -5,31 +5,7 @@ import axios from "axios"
 const initialMessage = ''
 const initialEmail = ''
 const initialSteps = 0
-const initialIndex = 4 // the index the "B" is at
-
-
-// THOUGHTS
-
-// when moving up, subtract by 3
-// When moving down, add by 3
-// When moving right, add 1
-// when moving left, subtract 1
-// we know where the block is due to index measuring from 0 to 8 (9 spaces)
-
-// finding coord's / row and column
-// from 0 to 8, just have all the cords aka 1,1 is at index 0 1,2 is index 1
-// or, moving left subtracts the first num by 1
-// movign right increases the first numb by 1
-// moving down increases the second num by 1
-// moving up decreases the second num by 1
-
-// Error message
-//The above can also be used for the error message i think
-// When the action of moving would place the number at 0 or 4, return the error message instead with whatever the move was
-
-
-// You moved x times
-// very easy.
+const initialIndex = 4 
 
 
 export default function AppFunctional(props) {
@@ -46,7 +22,6 @@ export default function AppFunctional(props) {
     let x = index % 3 + 1;
     let y = index / 3 + 1;
     let roundedY = Math.floor(y)
-    // console.log(x, roundedY)
     return {x , roundedY}
   }
 
@@ -137,7 +112,6 @@ export default function AppFunctional(props) {
       "email": email
     })
     .then(res => {
-      // console.log(res)
       setMessage(res.data.message)
     })
     .then(res => {
